@@ -10,7 +10,7 @@ const app = express();
 
 // Replace the '/dist/<to_your_project_name>'
 
-app.use(express.static(__dirname + '.dist/music-portfolio '));
+app.use(express.static(__dirname + '/dist/music-portfolio'));
 
 app.get('*', function(req, res) {
 
