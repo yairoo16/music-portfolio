@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Request } from '../model/request';
+import { RequestService } from '../_services/request.service';
 
 
 @Component({
@@ -12,7 +13,7 @@ export class RequestComponent implements OnInit {
   request: Request;
   requestForm: FormGroup;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private requestService: RequestService) { }
 
   ngOnInit() {
     this.initRequestForm();
@@ -30,6 +31,12 @@ export class RequestComponent implements OnInit {
     if (this.requestForm.valid) {
       this.request = Object.assign({}, this.requestForm.value);
       console.log(this.request);
+      this.requestService.submitRequest(this.request).subscribe(() => {
+        console.log('Request submitted');
+      }, error => {
+        console.log(error);
+      });
+
     }
   }
 

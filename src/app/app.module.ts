@@ -1,4 +1,6 @@
 import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -21,6 +23,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    HttpClientModule,
     ReactiveFormsModule
   ],
   providers: [],

@@ -8,11 +8,11 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class RequestService {
-  baseUrl = environment.apiUrl + 'auth/';
+  baseUrl = environment.apiUrl + 'requests/';
 
   constructor(private http: HttpClient) { }
 
   submitRequest(request: Request) {
-    return this.http.post(this.baseUrl + 'request', request);
+    return this.http.post(this.baseUrl, request);
   }
 }
