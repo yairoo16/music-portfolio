@@ -1,3 +1,4 @@
-p {
+.jumbotron {
+  background-color: rgb(27, 12, 12);
   color: white;
 }
