@@ -1,4 +1,8 @@
+import { TrackService } from './../_services/track.service';
 import { Component, OnInit } from '@angular/core';
+import { Track } from '../_models/track';
+import { environment } from '../../environments/environment';
+
 
 @Component({
   selector: 'app-home',
@@ -7,9 +11,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  tracks: Track[];
+
+  constructor(private trackService: TrackService) { }
 
   ngOnInit() {
+    this.trackService.getAllTracks().subscribe(tracks => {
+      this.tracks = tracks;
+    });
   }
 
 }

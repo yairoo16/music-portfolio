@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
-import { Request } from '../model/request';
+import { Request } from '../_models/request';
 import { RequestService } from '../_services/request.service';
 
 

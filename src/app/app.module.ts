@@ -10,6 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
 import { RequestComponent } from './request/request.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { TrackCardComponent } from './track/track-card/track-card.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     HeaderComponent,
     HomeComponent,
     FooterComponent,
-    RequestComponent
+    RequestComponent,
+    TrackCardComponent
   ],
   imports: [
     BrowserModule,
