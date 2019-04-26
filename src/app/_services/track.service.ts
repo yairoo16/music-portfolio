@@ -19,4 +19,8 @@ export class TrackService {
   addTrack(track: Track) {
     return this.http.post(this.baseUrl, track);
   }
+
+  playAudio() {
+
+  }
 }

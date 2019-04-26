@@ -11,6 +11,7 @@ import { FooterComponent } from './footer/footer.component';
 import { RequestComponent } from './request/request.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { TrackCardComponent } from './track/track-card/track-card.component';
+import { AudioPlayerComponent } from './audio-player/audio-player.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { TrackCardComponent } from './track/track-card/track-card.component';
     HomeComponent,
     FooterComponent,
     RequestComponent,
-    TrackCardComponent
+    TrackCardComponent,
+    AudioPlayerComponent
   ],
   imports: [
     BrowserModule,

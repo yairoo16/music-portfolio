@@ -17,4 +17,8 @@ export class TrackCardComponent implements OnInit {
   ngOnInit() {
   }
 
+  onPlayAudio(id: number) {
+
+  }
+
 }
