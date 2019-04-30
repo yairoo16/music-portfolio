@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit {
   constructor(private trackService: TrackService) { }
 
   ngOnInit() {
+    this.trackService.loadTrackList();
     this.trackService.getAllTracks().subscribe(tracks => {
       this.tracks = tracks;
     });

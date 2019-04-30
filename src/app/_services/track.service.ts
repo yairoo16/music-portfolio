@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { Track } from '../_models/track';
-
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +10,19 @@ import { Track } from '../_models/track';
 export class TrackService {
   baseUrl = environment.apiUrl + 'tracks/';
 
+  private trackListStore = new BehaviorSubject<Track[]>(null);
+  tracklist = this.trackListStore.asObservable();
+
+  // private selectedTrackSource = new BehaviorSubject<Track>(null);
+  // selectedTrack = this.selectedTrackSource.asObservable();
+
   constructor(private http: HttpClient) { }
+
+  loadTrackList() {
+    this.http.get<Track[]>(this.baseUrl).subscribe(tracks => {
+      this.trackListStore.next(tracks);
+    });
+  }
 
   getAllTracks() {
       return this.http.get<Track[]>(this.baseUrl);
@@ -20,7 +32,9 @@ export class TrackService {
     return this.http.post(this.baseUrl, track);
   }
 
-  playAudio() {
-
+  playAudio(id: number) {
+    this.tracklist.subscribe(tracks => {
+      const track = tracks.find(t => t.id === id);
+    });
   }
 }
