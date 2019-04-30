@@ -19,7 +19,7 @@ export class TrackCardComponent implements OnInit {
   }
 
   onPlayAudio(id: number) {
-    this.trackService.playAudio(id);
+    this.trackService.playAudioInFooter(id);
   }
 
 }

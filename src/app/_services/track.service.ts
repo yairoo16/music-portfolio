@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Output, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { Track } from '../_models/track';
@@ -12,6 +12,8 @@ export class TrackService {
 
   private trackListStore = new BehaviorSubject<Track[]>(null);
   tracklist = this.trackListStore.asObservable();
+
+  @Output() newTrackSelected: EventEmitter<Track> = new EventEmitter();
 
   // private selectedTrackSource = new BehaviorSubject<Track>(null);
   // selectedTrack = this.selectedTrackSource.asObservable();
@@ -32,9 +34,10 @@ export class TrackService {
     return this.http.post(this.baseUrl, track);
   }
 
-  playAudio(id: number) {
+  playAudioInFooter(id: number) {
     this.tracklist.subscribe(tracks => {
       const track = tracks.find(t => t.id === id);
+      this.newTrackSelected.emit(track);
     });
   }
 }

@@ -1,7 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Track } from '../_models/track';
 import { TrackService } from '../_services/track.service';
+import { PlayerIndex } from '@angular/core/src/render3/interfaces/player';
 
 @Component({
   selector: 'app-footer',
@@ -10,10 +11,10 @@ import { TrackService } from '../_services/track.service';
 })
 export class FooterComponent implements OnInit {
 
-  @Input() track: Track;
   tracks: Track[];
   currentTrackPath: string;
   s3BaseMusicUrl = environment.s3Url + 'music/';
+  @ViewChild('audio') audio;
 
   constructor(private trackService: TrackService) { }
 
@@ -21,6 +22,12 @@ export class FooterComponent implements OnInit {
     this.trackService.getAllTracks().subscribe(tracks => {
       // initialize player with first track in list
       this.currentTrackPath = tracks[0].music;
+    });
+
+    this.trackService.newTrackSelected.subscribe(track => {
+      this.currentTrackPath = track.music;
+      const audio = this.audio;
+      // audio.src = this.s3BaseMusicUrl + this.currentTrackPath;
     });
   }
 
