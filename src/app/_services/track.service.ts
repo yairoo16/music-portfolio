@@ -38,6 +38,8 @@ export class TrackService {
     this.tracklist.subscribe(tracks => {
       const track = tracks.find(t => t.id === id);
       this.newTrackSelected.emit(track);
-    });
+    }).unsubscribe();
+    // make sure to unsubscribe here in order to allow for music to
+    // continue playing and allow for away navigation.
   }
 }

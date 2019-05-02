@@ -19,14 +19,17 @@ export class FooterComponent implements OnInit {
   constructor(private trackService: TrackService) { }
 
   ngOnInit() {
+    const audio = document.getElementById('audio') as HTMLAudioElement;
+
     this.trackService.getAllTracks().subscribe(tracks => {
       // initialize player with first track in list
       this.initialTrackPath = tracks[0].music;
+      audio.src = this.s3BaseMusicUrl + this.initialTrackPath;
     });
 
     this.trackService.newTrackSelected.subscribe(track => {
       this.currentTrackPath = track.music;
-      const audio = document.getElementById('audio') as HTMLAudioElement;
+      // const audio = document.getElementById('audio') as HTMLAudioElement;
       audio.src = this.s3BaseMusicUrl + this.currentTrackPath;
       audio.pause();
       audio.load();
