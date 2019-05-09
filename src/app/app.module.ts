@@ -12,6 +12,7 @@ import { RequestComponent } from './request/request.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { TrackCardComponent } from './track/track-card/track-card.component';
 import { AudioPlayerComponent } from './audio-player/audio-player.component';
+import { TrackListComponent } from './track/track-list/track-list.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { AudioPlayerComponent } from './audio-player/audio-player.component';
     FooterComponent,
     RequestComponent,
     TrackCardComponent,
-    AudioPlayerComponent
+    AudioPlayerComponent,
+    TrackListComponent
   ],
   imports: [
     BrowserModule,
