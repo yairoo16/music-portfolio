@@ -26,12 +26,12 @@
 
         <div class="form-group">
             <label for="description" class="control-label" style="margin-right:10px">Description</label>
-          <input type="text"
+          <textarea
             [ngClass]="{'is-invalid': requestForm.get('description').errors
               && requestForm.get('description').touched}"
             class="form-control is-invalid"
             formControlName="description"
-            placeholder="Enter a description">
+            placeholder="Enter a description"></textarea>
           <div class="invalid-feedback">You must enter a description.</div>
         </div>
 

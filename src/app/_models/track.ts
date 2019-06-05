@@ -1,3 +1,5 @@
+import { Artist } from './artist';
+
 export interface Track {
     id: number;
     title: string;
@@ -6,5 +8,6 @@ export interface Track {
     music: string;
     genreId: number;
     isFeatured: boolean;
+    artists: Artist[];
 
 }
