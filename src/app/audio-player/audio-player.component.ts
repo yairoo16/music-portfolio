@@ -11,7 +11,8 @@ import { TrackService } from '../_services/track.service';
 export class AudioPlayerComponent implements OnInit {
 
   tracks: Track[];
-  artistsString: string;
+  artistsNames: string[];
+  artistsString = '';
   currentTrack: Track;
   s3BaseMusicUrl = environment.s3Url + 'music/';
 
@@ -23,14 +24,17 @@ export class AudioPlayerComponent implements OnInit {
     this.trackService.getAllTracks().subscribe(tracks => {
       // initialize player with first track in list
       this.currentTrack = tracks[0];
-      this.artistsString = tracks[0].artists.toString().replace(/,\s*$/, '');
+      this.artistsNames = this.currentTrack.artists.map(x => x.name);
+      this.artistsNames.forEach(name => {
+        this.artistsString += name + ', ';
+      });
       audio.src = this.s3BaseMusicUrl + this.currentTrack.music;
     });
 
     this.trackService.newTrackSelected.subscribe(track => {
-      debugger;
       this.currentTrack = track;
-      this.artistsString = this.currentTrack.artists.toString().replace(/,\s*$/, '');
+      this.artistsNames = this.currentTrack.artists.map(x => x.name);
+      this.artistsString = this.artistsNames.toString(); // .replace(/,\s*$/, '');
       // const audio = document.getElementById('audio') as HTMLAudioElement;
       audio.src = this.s3BaseMusicUrl + this.currentTrack.music;
       audio.pause();
