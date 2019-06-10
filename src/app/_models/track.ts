@@ -7,7 +7,7 @@ export interface Track {
     image: string;
     music: string;
     genreId: number;
-    isFeatured: boolean;
+    featured: boolean;
     artists: Artist[];
 
 }

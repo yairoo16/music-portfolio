@@ -30,14 +30,25 @@ export class TrackService {
       return this.http.get<Track[]>(this.baseUrl);
   }
 
+  getTrack(id: number) {
+    return this.http.get<Track>(this.baseUrl + id);
+  }
+
   addTrack(track: Track) {
     return this.http.post(this.baseUrl, track);
   }
 
   playAudioInFooter(id: number) {
     this.tracklist.subscribe(tracks => {
-      const track = tracks.find(t => t.id === id);
-      this.newTrackSelected.emit(track);
+      if (tracks) {
+        const track = tracks.find(t => t.id === id);
+        this.newTrackSelected.emit(track);
+      } else {
+        this.getTrack(id).subscribe(t => {
+          const track = t;
+          this.newTrackSelected.emit(track);
+        });
+      }
     }).unsubscribe();
     // make sure to unsubscribe here in order to allow for music to
     // continue playing and allow for away navigation.

@@ -11,14 +11,14 @@ import { environment } from '../../environments/environment';
 })
 export class HomeComponent implements OnInit {
 
-  tracks: Track[];
+  featuredTracks: Track[];
 
   constructor(private trackService: TrackService) { }
 
   ngOnInit() {
     this.trackService.loadTrackList();
     this.trackService.getAllTracks().subscribe(tracks => {
-      this.tracks = tracks;
+      this.featuredTracks = tracks.filter(x => x.featured === true);
     });
   }
 

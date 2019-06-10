@@ -27,13 +27,16 @@
     </thead>
     <tbody>
       <tr *ngFor="let track of tracks">
-        <td><img class="img-thumbnail" src="{{s3BaseImageUrl + track.image}}" alt="Thumbnail"></td>
+          
+        <td><a [routerLink]="['/tracks', track.id]">
+            <img class="img-thumbnail" src="{{s3BaseImageUrl + track.image}}" alt="Thumbnail">
+          </a> </td>
         <td><div class="play-button">
           <button class="btn btn-primary"
           (click)="onPlayAudio(track.id)"><i class="fa fa-play"></i></button></div></td>
         <td>{{track.title}}</td>
         <td >
-          <span *ngFor="let artist of track.artists">{{artist.name}}</span>
+          <span *ngFor="let artist of track.artists">{{artist.name}}, </span>
         </td>
         <td>{{track.releaseDate}}</td>
       </tr>

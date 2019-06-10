@@ -1,0 +1,24 @@
+<div class="audiobar">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-3">
+                <div *ngIf="currentTrack">
+                    <small>{{currentTrack.title}}</small> - 
+                    <small><span *ngFor="let artist of currentTrack.artists">{{artistsString}} </span></small> 
+                </div>        
+            </div>
+
+            <div class="col-md-6">
+
+
+                <audio id="audio" controls>
+                    Your browser does not support the
+                    <code>audio</code> element.
+                </audio>
+            </div>
+
+        </div>
+
+    </div>
+</div>

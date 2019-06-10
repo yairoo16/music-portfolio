@@ -1,0 +1,26 @@
+.audiobar {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    line-height: 60px; /* Vertically center the text there */
+    background-color: #110f0f;
+    color: white;
+  }
+  
+  .container {
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  @media (min-width: 600px) {
+    .nav-container {
+      height: 80px; /* Set the fixed height of the footer here */
+    }
+
+  @media (max-width: 600px) {
+    .nav-container {
+      height: 120px; /* Set the fixed height of the footer here */
+    }
+  }
+  }
+  
