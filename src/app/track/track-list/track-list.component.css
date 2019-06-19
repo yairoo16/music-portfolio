@@ -2,3 +2,16 @@
   width: 40px;
   height: 40px;
 }
+
+@media (min-width: 900px) {
+  #cards {
+    display: none;
+  }
+}
+
+
+@media (max-width: 900px) {
+  table {
+    display: none;
+  }
+}

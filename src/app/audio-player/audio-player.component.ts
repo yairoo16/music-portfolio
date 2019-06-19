@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Track } from '../_models/track';
 import { TrackService } from '../_services/track.service';
+import { StringFormatService } from '../_services/string-format.service';
 
 @Component({
   selector: 'app-audio-player',
@@ -11,12 +12,12 @@ import { TrackService } from '../_services/track.service';
 export class AudioPlayerComponent implements OnInit {
 
   tracks: Track[];
-  artistsNames: string[];
-  artistsString = '';
   currentTrack: Track;
+  s3BaseImageUrl = environment.s3Url + 'images/';
   s3BaseMusicUrl = environment.s3Url + 'music/';
 
-  constructor(private trackService: TrackService) { }
+
+  constructor(private trackService: TrackService, private stringFormatService: StringFormatService) { }
 
   ngOnInit() {
     const audio = document.getElementById('audio') as HTMLAudioElement;
@@ -24,18 +25,13 @@ export class AudioPlayerComponent implements OnInit {
     this.trackService.getAllTracks().subscribe(tracks => {
       // initialize player with first track in list
       this.currentTrack = tracks[0];
-      this.artistsNames = this.currentTrack.artists.map(x => x.name);
-      this.artistsNames.forEach(name => {
-        this.artistsString += name + ', ';
-      });
+      this.currentTrack.artistNames = this.stringFormatService.getArtistNames(this.currentTrack.artists.map(x => x.name));
       audio.src = this.s3BaseMusicUrl + this.currentTrack.music;
     });
 
     this.trackService.newTrackSelected.subscribe(track => {
       this.currentTrack = track;
-      this.artistsNames = this.currentTrack.artists.map(x => x.name);
-      this.artistsString = this.artistsNames.toString(); // .replace(/,\s*$/, '');
-      // const audio = document.getElementById('audio') as HTMLAudioElement;
+      this.currentTrack.artistNames = this.stringFormatService.getArtistNames(this.currentTrack.artists.map(x => x.name));
       audio.src = this.s3BaseMusicUrl + this.currentTrack.music;
       audio.pause();
       audio.load();

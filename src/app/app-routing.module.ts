@@ -5,6 +5,7 @@ import { RequestComponent } from './request/request.component';
 import { TrackListComponent } from './track/track-list/track-list.component';
 import { TrackDetailComponent } from './track/track-detail/track-detail.component';
 import { TrackDetailResolver } from './_resolvers/track-detail.resolver';
+import { SearchComponent } from './search/search.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -13,6 +14,7 @@ const appRoutes: Routes = [
   { path: 'tracks/:id', component: TrackDetailComponent, resolve: {
     track: TrackDetailResolver
   }},
+  { path: 'search', component: SearchComponent},
   { path: 'request', component: RequestComponent},
   { path: '**', redirectTo: 'home', pathMatch: 'full'}
 ];

@@ -14,6 +14,7 @@ import { TrackCardComponent } from './track/track-card/track-card.component';
 import { AudioPlayerComponent } from './audio-player/audio-player.component';
 import { TrackListComponent } from './track/track-list/track-list.component';
 import { TrackDetailComponent } from './track/track-detail/track-detail.component';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { TrackDetailComponent } from './track/track-detail/track-detail.componen
     TrackCardComponent,
     AudioPlayerComponent,
     TrackListComponent,
-    TrackDetailComponent
+    TrackDetailComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,

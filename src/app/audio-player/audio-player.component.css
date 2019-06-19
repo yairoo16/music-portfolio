@@ -5,22 +5,54 @@
     line-height: 60px; /* Vertically center the text there */
     background-color: #110f0f;
     color: white;
-  }
-  
-  .container {
-    text-align: center;
-    margin-top: 10px;
+    line-height: normal;
   }
 
-  @media (min-width: 600px) {
+  @media (min-width: 900px) {
     .nav-container {
       height: 80px; /* Set the fixed height of the footer here */
     }
+    img.img-thumbnail {
+      width:130px;
+      height:90px;
+    }
+    #audio {
+      margin-top: 25px;
+    }
+    #trackinfo {
+      margin: 20px;
+    }
+  }
+
+  @media screen and (min-width: 600px) and (max-width: 900px){
+    .nav-container {
+      height: 80px; /* Set the fixed height of the footer here */
+    }
+    img.img-thumbnail {
+      width:80px;
+      height:50px;
+    }
+    #audio {
+      padding-top: 5px;
+    }
+
+  }
+
 
   @media (max-width: 600px) {
     .nav-container {
       height: 120px; /* Set the fixed height of the footer here */
     }
-  }
+    img.img-thumbnail {
+      width:80px;
+      height:50px;
+      float: right;
+    }
+    #audio {
+      padding-top: 5px;
+    }
+    .audiobar {
+      text-align: center;
+    }
   }
   

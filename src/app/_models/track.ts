@@ -9,5 +9,6 @@ export interface Track {
     genreId: number;
     featured: boolean;
     artists: Artist[];
+    artistNames: string;
 
 }
